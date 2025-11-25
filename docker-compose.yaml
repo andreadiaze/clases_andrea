@@ -1,0 +1,17 @@
+## docs: https://docs.docker.com/reference/compose-file/
+
+services:
+  postgres:
+    image: postgres:17.5-alpine
+    restart: unless-stopped
+    ports:
+      - '5555:5432' # Used 5555 because Andrea had 5432 taken by local postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+
+volumes:
+  postgres_data:

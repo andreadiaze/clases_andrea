@@ -1,0 +1,11 @@
+// node: vscode workspace settings
+
+{
+  // Formatting
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll.eslint": "explicit" // "ESLint": Fix errors automatically
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode" // "Prettier - Code formatter"
+}

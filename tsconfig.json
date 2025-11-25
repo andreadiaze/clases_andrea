@@ -1,0 +1,32 @@
+/* docs:
+- install: https://www.typescriptlang.org/download/
+- init: https://www.typescriptlang.org/docs/handbook/compiler-options.html#compiler-options
+- tsconfig: https://www.typescriptlang.org/tsconfig/
+*/
+
+{
+  "compilerOptions": {
+    // Module
+    "target": "es2023", // Controls emitted JS syntax features
+    "module": "commonjs", // Controls emitted module format
+    "esModuleInterop": true, // Allow default-style imports from CommonJS packages
+
+    // Linting
+    "strict": true, // Mandatory for most typescript-eslint rules
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true, // On switch cases, prevents missing break or return
+    "noUncheckedSideEffectImports": true, // On side-effect-only-imports, validate if file exists
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // File layout
+    "outDir": "./dist",
+
+    // Path aliases
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
