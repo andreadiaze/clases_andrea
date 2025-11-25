@@ -1,27 +1,40 @@
 // import { postsService } from '@/features/posts/posts.service';
+import { postsService } from '@/features/posts/posts.service';
 import { Request, Response } from 'express';
+import { StatusCodes } from 'http-status-codes';
 
-export const getPosts = (req: Request, res: Response) => {
-  res.json(req.query);
+export const getPosts = (
+  req: Request<unknown, unknown, unknown, { limit: string }>,
+  res: Response,
+) => {
+  const result = postsService.getAll(req.query);
+  res.json(result);
 };
 
 export const getPost = (req: Request, res: Response) => {
-  const paramsId = req.params.id;
-  res.json({ message: paramsId });
+  const result = postsService.get(req.params.id);
+  res.json(result);
 };
 
-export const createPost = (req: Request, res: Response) => {
-  // const createdPost = await postsService.create();
-
-  res.json(req.body);
+export const createPost = async (
+  req: Request<unknown, unknown, { content: string }, unknown>,
+  res: Response,
+) => {
+  await postsService.create(req.body);
+  res
+    .status(StatusCodes.CREATED)
+    .json({ message: 'Post created successfully' });
 };
 
-export const updatePost = (req: Request, res: Response) => {
-  const paramsId = req.params.id;
-  res.json({ ...req.body, paramsId });
+export const updatePost = (
+  req: Request<{ id: string }, unknown, { name: string }, unknown>,
+  res: Response,
+) => {
+  postsService.update(req.params.id, req.body);
+  res.json({ message: 'Post updated successfully' });
 };
 
 export const deletePost = (req: Request, res: Response) => {
-  const paramsId = req.params.id;
-  res.json({ message: paramsId });
+  postsService.delete(req.params.id);
+  res.sendStatus(StatusCodes.NO_CONTENT);
 };
