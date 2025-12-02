@@ -3,16 +3,16 @@ import { postsService } from '@/features/posts/posts.service';
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-export const getPosts = (
+export const getPosts = async (
   req: Request<unknown, unknown, unknown, { limit: string }>,
   res: Response,
 ) => {
-  const result = postsService.getAll(req.query);
+  const result = await postsService.getAll(req.query);
   res.json(result);
 };
 
-export const getPost = (req: Request, res: Response) => {
-  const result = postsService.get(req.params.id);
+export const getPost = async (req: Request, res: Response) => {
+  const result = await postsService.get(req.params.id);
   res.json(result);
 };
 
@@ -26,15 +26,15 @@ export const createPost = async (
     .json({ message: 'Post created successfully' });
 };
 
-export const updatePost = (
-  req: Request<{ id: string }, unknown, { name: string }, unknown>,
+export const updatePost = async (
+  req: Request<{ id: string }, unknown, { content: string }, unknown>,
   res: Response,
 ) => {
-  postsService.update(req.params.id, req.body);
+  await postsService.update(req.params.id, req.body);
   res.json({ message: 'Post updated successfully' });
 };
 
-export const deletePost = (req: Request, res: Response) => {
-  postsService.delete(req.params.id);
+export const deletePost = async (req: Request, res: Response) => {
+  await postsService.delete(req.params.id);
   res.sendStatus(StatusCodes.NO_CONTENT);
 };

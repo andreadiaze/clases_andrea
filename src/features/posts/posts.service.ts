@@ -1,16 +1,45 @@
+import { ApiError } from '@/errors/api-error';
 import { db } from '@/libs/drizzle/db';
 import { postsTable } from '@/libs/drizzle/schemas';
+import { eq } from 'drizzle-orm';
+import { StatusCodes } from 'http-status-codes';
 
 interface GetAllProps {
   limit: string;
 }
 class PostsService {
-  getAll({ limit }: GetAllProps) {
-    return limit;
+  async getAll({ limit }: GetAllProps) {
+    const posts = await db.query.postsTable.findMany({ limit: Number(limit) });
+    return posts;
   }
 
-  get(id: string) {
-    return id;
+  // SELECT MODE
+  // async get(id: string) {
+  //   const posts = await db
+  //     .select()
+  //     .from(postsTable)
+  //     .where(eq(postsTable.id, id));
+  //   if (!posts.length)
+  //     throw new ApiError({
+  //       message: 'Post not found',
+  //       status: StatusCodes.NOT_FOUND,
+  //     });
+
+  //   return posts[0];
+  // }
+
+  // QUERY MODE
+  async get(id: string) {
+    const post = await db.query.postsTable.findFirst({
+      where: eq(postsTable.id, id),
+    });
+    if (!post)
+      throw new ApiError({
+        message: 'Post not found',
+        status: StatusCodes.NOT_FOUND,
+      });
+
+    return post;
   }
 
   async create(props: { content: string }) {
@@ -18,12 +47,33 @@ class PostsService {
     return createdPost;
   }
 
-  update(id: string, props: { name: string }) {
-    return { id, ...props };
+  async update(id: string, props: { content: string }) {
+    const updatedPosts = await db
+      .update(postsTable)
+      .set(props)
+      .where(eq(postsTable.id, id))
+      .returning();
+    if (!updatedPosts.length)
+      throw new ApiError({
+        message: 'Post not found',
+        status: StatusCodes.NOT_FOUND,
+      });
+
+    return updatedPosts[0];
   }
 
-  delete(id: string) {
-    return id;
+  async delete(id: string) {
+    const deletedPosts = await db
+      .delete(postsTable)
+      .where(eq(postsTable.id, id))
+      .returning();
+    if (!deletedPosts.length)
+      throw new ApiError({
+        message: 'Post not found',
+        status: StatusCodes.NOT_FOUND,
+      });
+
+    return deletedPosts[0];
   }
 }
 
