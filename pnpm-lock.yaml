@@ -12,7 +12,7 @@ importers:
         specifier: ^0.45.0
         version: 0.45.0(@types/pg@8.15.6)(pg@8.16.3)
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.1
         version: 5.2.1
       http-status-codes:
         specifier: ^2.3.0
@@ -20,12 +20,15 @@ importers:
       pg:
         specifier: ^8.16.3
         version: 8.16.3
+      zod:
+        specifier: ^4.1.13
+        version: 4.1.13
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.1
         version: 9.39.1
       '@types/express':
-        specifier: ^5.0.5
+        specifier: ^5.0.6
         version: 5.0.6
       '@types/node':
         specifier: ^24.10.1
@@ -37,7 +40,7 @@ importers:
         specifier: ^17.2.3
         version: 17.2.3
       drizzle-kit:
-        specifier: ^0.31.7
+        specifier: ^0.31.8
         version: 0.31.8
       eslint:
         specifier: ^9.39.1
@@ -52,19 +55,19 @@ importers:
         specifier: ^16.5.0
         version: 16.5.0
       prettier:
-        specifier: ^3.6.2
+        specifier: ^3.7.4
         version: 3.7.4
       tsc-alias:
         specifier: ^1.8.16
         version: 1.8.16
       tsx:
-        specifier: ^4.20.6
+        specifier: ^4.21.0
         version: 4.21.0
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
       typescript-eslint:
-        specifier: ^8.48.0
+        specifier: ^8.48.1
         version: 8.48.1(eslint@9.39.1)(typescript@5.9.3)
 
 packages:
@@ -1602,6 +1605,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
+  zod@4.1.13:
+    resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
+
 snapshots:
 
   '@drizzle-team/brocli@0.10.2': {}
@@ -2950,3 +2956,5 @@ snapshots:
   xtend@4.0.2: {}
 
   yocto-queue@0.1.0: {}
+
+  zod@4.1.13: {}
