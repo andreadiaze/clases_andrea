@@ -1,2 +1,4 @@
-/node_modules
-/dist
+## docs: https://git-scm.com/docs/gitignore
+
+**/node_modules
+**/dist
