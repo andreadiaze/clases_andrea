@@ -1,5 +1,6 @@
 // import { postsService } from '@/features/posts/posts.service';
 import { postsService } from '@/features/posts/posts.service';
+import { CreatePost } from '@/libs/zod/schemas/posts.schema';
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
@@ -17,7 +18,7 @@ export const getPost = async (req: Request, res: Response) => {
 };
 
 export const createPost = async (
-  req: Request<unknown, unknown, { content: string }, unknown>,
+  req: Request<unknown, unknown, CreatePost, unknown>,
   res: Response,
 ) => {
   await postsService.create(req.body);

@@ -1,12 +1,14 @@
 import { ApiError } from '@/errors/api-error';
 import { db } from '@/libs/drizzle/db';
 import { postsTable } from '@/libs/drizzle/schemas';
+import { CreatePost } from '@/libs/zod/schemas/posts.schema';
 import { eq } from 'drizzle-orm';
 import { StatusCodes } from 'http-status-codes';
 
 interface GetAllProps {
   limit: string;
 }
+
 class PostsService {
   async getAll({ limit }: GetAllProps) {
     const posts = await db.query.postsTable.findMany({ limit: Number(limit) });
@@ -42,7 +44,7 @@ class PostsService {
     return post;
   }
 
-  async create(props: { content: string }) {
+  async create(props: CreatePost) {
     const [createdPost] = await db.insert(postsTable).values(props).returning();
     return createdPost;
   }
