@@ -1,7 +1,5 @@
 ## Docs:
 
-ESTO ES UNA PRUEBA
-
 - express: https://expressjs.com/en/starter/hello-world.html
 - prettier install: https://prettier.io/docs/install
 - prettier config: https://prettier.io/docs/configuration
@@ -43,6 +41,14 @@ Start
 - [x] dotenv
 - [x] http-status-codes
 - [x] drizzle-orm | drizzle-kit | pg | @types/pg
+
+## To-Do
+
+- [] logger con winston/morgan
+- [] documentación api swagger-ui-express
+- [] seeders
+- [] testing
+- [] auth + email
 
 ## Requerimientos
 

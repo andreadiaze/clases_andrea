@@ -1,4 +1,6 @@
-## Add what's not listed in ".gitignore"
-/migrations
-/pnpm-lock.yaml
-/package-lock.json
+## note: Add what's not listed in ".gitignore"
+
+**/migrations
+**/resources
+**/pnpm-lock.yaml
+**/package-lock.json
