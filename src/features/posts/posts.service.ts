@@ -1,16 +1,16 @@
 import { ApiError } from '@/errors/api-error';
 import { db } from '@/libs/drizzle/db';
 import { postsTable } from '@/libs/drizzle/schemas';
-import { CreatePost } from '@/libs/zod/schemas/posts.schema';
+import {
+  CreatePost,
+  GetPosts,
+  UpdatePost,
+} from '@/libs/zod/schemas/posts.schema';
 import { eq } from 'drizzle-orm';
 import { StatusCodes } from 'http-status-codes';
 
-interface GetAllProps {
-  limit: string;
-}
-
 class PostsService {
-  async getAll({ limit }: GetAllProps) {
+  async getAll({ limit }: GetPosts) {
     const posts = await db.query.postsTable.findMany({ limit: Number(limit) });
     return posts;
   }
@@ -49,7 +49,7 @@ class PostsService {
     return createdPost;
   }
 
-  async update(id: string, props: { content: string }) {
+  async update(id: string, props: UpdatePost) {
     const updatedPosts = await db
       .update(postsTable)
       .set(props)

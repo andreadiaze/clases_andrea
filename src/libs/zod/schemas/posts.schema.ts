@@ -1,3 +1,4 @@
+import { content, limit, page, search, uuid } from '@/libs/zod/utils/fields';
 import * as z from 'zod';
 
 // ---------------------------
@@ -10,15 +11,16 @@ export type CreatePost = z.infer<typeof createPostSchema>;
 export type UpdatePost = z.infer<typeof updatePostSchema>;
 
 // ---------------------------
+// FIELDS
+// ---------------------------
+
+const id = uuid;
+
+// ---------------------------
 // SCHEMAS
 // ---------------------------
 
-export const postsParamsSchema = z.strictObject({ id: z.string() });
-
-export const getPostsSchema = z.strictObject({ limit: z.string() });
-
-export const createPostSchema = z.strictObject({
-  content: z.string().min(1).max(5),
-});
-
-export const updatePostSchema = z.strictObject({ content: z.string() });
+export const postsParamsSchema = z.strictObject({ id });
+export const getPostsSchema = z.strictObject({ limit, page, search }).partial();
+export const createPostSchema = z.strictObject({ content });
+export const updatePostSchema = z.strictObject({ content }).partial();
