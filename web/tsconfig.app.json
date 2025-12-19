@@ -22,7 +22,13 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    // Path aliases
+    "baseUrl": ".", // Must be set for path aliases to work
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src"]
 }
