@@ -6,9 +6,9 @@ import {
   PostsParams,
   UpdatePost,
 } from '@/libs/zod/schemas/posts.schema';
+import { TypedRequest } from '@/types/typed-request';
 import { Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { TypedRequest } from 'types/typed-request';
 
 export const getPosts = async (
   req: TypedRequest<{ query: GetPosts }>,

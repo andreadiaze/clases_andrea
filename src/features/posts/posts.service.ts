@@ -1,4 +1,4 @@
-import { ApiError } from '@/errors/api-error';
+import { buildEntityNotFoundError } from '@/errors/api-errors';
 import { db } from '@/libs/drizzle/db';
 import { postsTable } from '@/libs/drizzle/schemas';
 import {
@@ -7,7 +7,8 @@ import {
   UpdatePost,
 } from '@/libs/zod/schemas/posts.schema';
 import { eq } from 'drizzle-orm';
-import { StatusCodes } from 'http-status-codes';
+
+const PostNotFoundError = buildEntityNotFoundError('Post');
 
 class PostsService {
   async getAll({ limit }: GetPosts) {
@@ -35,11 +36,7 @@ class PostsService {
     const post = await db.query.postsTable.findFirst({
       where: eq(postsTable.id, id),
     });
-    if (!post)
-      throw new ApiError({
-        message: 'Post not found',
-        status: StatusCodes.NOT_FOUND,
-      });
+    if (!post) throw PostNotFoundError;
 
     return post;
   }
@@ -55,11 +52,7 @@ class PostsService {
       .set(props)
       .where(eq(postsTable.id, id))
       .returning();
-    if (!updatedPosts.length)
-      throw new ApiError({
-        message: 'Post not found',
-        status: StatusCodes.NOT_FOUND,
-      });
+    if (!updatedPosts.length) throw PostNotFoundError;
 
     return updatedPosts[0];
   }
@@ -69,11 +62,7 @@ class PostsService {
       .delete(postsTable)
       .where(eq(postsTable.id, id))
       .returning();
-    if (!deletedPosts.length)
-      throw new ApiError({
-        message: 'Post not found',
-        status: StatusCodes.NOT_FOUND,
-      });
+    if (!deletedPosts.length) throw PostNotFoundError;
 
     return deletedPosts[0];
   }
