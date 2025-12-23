@@ -1,0 +1,4 @@
+## note: Add what's not listed in ".gitignore"
+
+**/pnpm-lock.yaml
+**/package-lock.json

@@ -1,8 +1,8 @@
-import { BrowserRouter, Route, Routes } from "react-router";
-import { ROUTES } from "../constants/routes";
-import { HomeRoute } from "./routes/home.route";
-import { NotFoundRoute } from "./routes/not-found.route";
-import { PostsRoute } from "./routes/posts.route";
+import { BrowserRouter, Route, Routes } from 'react-router';
+import { ROUTES } from '../constants/routes';
+import { HomeRoute } from './routes/home.route';
+import { NotFoundRoute } from './routes/not-found.route';
+import { PostsRoute } from './routes/posts.route';
 
 export const AppRouter = () => {
   return (
