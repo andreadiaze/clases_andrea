@@ -1,3 +1,3 @@
 export const ROUTES = {
-  POSTS: "/posts",
+  POSTS: '/posts',
 } as const;
