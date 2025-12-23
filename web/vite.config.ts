@@ -5,8 +5,12 @@ import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(), // "@vitejs/plugin-react-swc": Babel replacement for faster compilation
+    tailwindcss(), // "tailwindcss" for vite
+  ],
   resolve: {
+    // Path aliases
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },

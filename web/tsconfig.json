@@ -1,3 +1,5 @@
+// note: In vite, this tsconfig is for the ide
+
 {
   "files": [],
   "references": [
