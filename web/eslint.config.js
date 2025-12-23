@@ -8,7 +8,7 @@ import tseslint from 'typescript-eslint';
 export default defineConfig([
   globalIgnores([
     'dist',
-    'shadcn-ui/', // "shadcn" components
+    '**/shadcn-ui/', // "shadcn" components
   ]),
   {
     files: ['**/*.{ts,tsx}'],
