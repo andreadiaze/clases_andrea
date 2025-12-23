@@ -8,12 +8,14 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "shadcn:add": "pnpm dlx shadcn@latest add",
     "clean": "find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -exec rm -rf {} +",
     "format:eol": "find . -type f -exec dos2unix {} +",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
