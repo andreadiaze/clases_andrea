@@ -1,4 +1,5 @@
-import { Button } from '@/components/shadcn-ui/button';
+import { Posts } from '@/features/posts/posts';
+import { Button } from '@/lib/shadcn/ui/button';
 import { useEffect, useState } from 'react';
 
 export const PostsRoute = () => {
@@ -39,6 +40,8 @@ export const PostsRoute = () => {
 
       <button onClick={() => setCounter((prev) => prev + 1)}>+</button>
       <button onClick={() => setCounter((prev) => prev + 1)}>+</button>
+
+      <Posts />
     </main>
   );
 };
