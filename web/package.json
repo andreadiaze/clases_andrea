@@ -6,12 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
-    "shadcn:add": "pnpm dlx shadcn@latest add",
     "clean": "find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -exec rm -rf {} +",
     "format:eol": "find . -type f -exec dos2unix {} +",
     "format": "prettier --write .",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

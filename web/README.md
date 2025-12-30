@@ -2,6 +2,41 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+---
+
+## Config files
+
+- .gitignore
+- .prettierignore | .prettierrc
+- components.json
+- eslint.config.js
+- package.json | pnpm-lock.yaml | pnpm-workspace.yaml
+- package.json
+- README.md
+- tsconfig.app.json | tsconfig.json | tsconfig.node.json
+- vite.config.ts
+
+## Packages
+
+- [x] "eslint" | "@eslint/js" | "globals" | "typescript-eslint"
+  - "eslint-config-prettier"
+  - "eslint-plugin-check-file"
+  - "eslint-plugin-react-hooks"
+  - "eslint-plugin-react-refresh"
+- [x] "prettier"
+  - "prettier-plugin-tailwindcss"
+- [x] "react" | "react-dom" | "@types/react" | "@types/react-dom"
+  - "typescript" | "@types/node"
+  - "vite" | "@vitejs/plugin-react-swc"
+- [x] "tailwindcss" | "@tailwindcss/vite"
+- [x] Shadcn: "class-variance-authority" | "clsx" | "lucide-react" | "tailwind-merge" | "tw-animate-css"
+  - "@radix-ui/react-slot"
+- [x] "react-router"
+
+---
+
+## Vite
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
