@@ -1,6 +1,6 @@
 // note: Based on https://ui.shadcn.com/docs/dark-mode/vite
 
-import { Button } from '@/lib/installed/components/ui/button';
+import { Button } from '@/lib/shadcn/installed/components/ui/button';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from './theme-provider';
 
