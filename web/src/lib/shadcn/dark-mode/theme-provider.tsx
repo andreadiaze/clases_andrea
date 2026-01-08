@@ -1,4 +1,4 @@
-// note: This file was copied without modifications from https://ui.shadcn.com/docs/dark-mode/vite
+// note: Copied from https://ui.shadcn.com/docs/dark-mode/vite
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
@@ -66,6 +66,7 @@ export function ThemeProvider({
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
 
