@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 
 export const NotFoundRoute = () => {
   return (
-    <main>
+    <>
       <h1>404</h1>
 
       <h2>Page Not Found</h2>
@@ -12,6 +12,6 @@ export const NotFoundRoute = () => {
       <button>
         <Link to="/">Back to Home</Link>
       </button>
-    </main>
+    </>
   );
 };

@@ -1,4 +1,4 @@
-import { Button } from '@/lib/shadcn/ui/button';
+import { Button } from '@/lib/shadcn/installed/components/ui/button';
 import { useContext } from 'react';
 import { PostsContext } from './posts.context';
 

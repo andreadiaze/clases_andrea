@@ -1,6 +1,7 @@
 import { Posts } from '@/features/posts/posts';
-import { Button } from '@/lib/shadcn/ui/button';
+import { Button } from '@/lib/shadcn/installed/components/ui/button';
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 
 export const PostsRoute = () => {
   const [counter, setCounter] = useState(0);
@@ -23,8 +24,12 @@ export const PostsRoute = () => {
     console.log('input');
   }, [input]);
 
+  const handleClickToaster = () => {
+    toast('Event has been created.');
+  };
+
   return (
-    <main>
+    <>
       <h1>Posts Route</h1>
 
       <Button variant="outline">shadcn button</Button>
@@ -40,8 +45,9 @@ export const PostsRoute = () => {
 
       <button onClick={() => setCounter((prev) => prev + 1)}>+</button>
       <button onClick={() => setCounter((prev) => prev + 1)}>+</button>
+      <Button onClick={handleClickToaster}>toaster</Button>
 
       <Posts />
-    </main>
+    </>
   );
 };
