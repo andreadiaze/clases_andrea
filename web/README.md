@@ -33,6 +33,39 @@ This template provides a minimal setup to get React working in Vite with HMR and
   - "@radix-ui/react-slot"
 - [x] "react-router"
 
+## Docs
+
+Prettier
+
+- setup: https://prettier.io/docs/install
+- .prettierrc: https://prettier.io/docs/configuration
+- .prettierignore: https://prettier.io/docs/ignore
+
+## Commands
+
+Helpers
+
+- `pnpm run clean`: Delete files ignored by git
+- `pnpm run format:eol`: Convert all files to LF
+- `pnpm install`: Install dependencies
+- `pnpm approve-builds`: Approve post-install scripts
+- `pnpm up --latest`: Update dependencies to the last version
+
+Format code
+
+- `pnpm run format`: Run prettier
+- `pnpm run lint`: Run eslint
+- `pnpm run typecheck`: Run type checker
+
+Start dev
+
+- `pnpm run dev`: Run frontend in development
+
+Start prod
+
+- `pnpm run build`: Build frontend
+- `pnpm run preview`: Run frontend in preview
+
 ---
 
 ## Vite
