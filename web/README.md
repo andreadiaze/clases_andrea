@@ -2,6 +2,74 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+---
+
+## Config files
+
+- .gitignore
+- .prettierignore | .prettierrc
+- components.json
+- eslint.config.js
+- package.json | pnpm-lock.yaml | pnpm-workspace.yaml
+- package.json
+- README.md
+- tsconfig.app.json | tsconfig.json | tsconfig.node.json
+- vite.config.ts
+
+## Packages
+
+- [x] "eslint" | "@eslint/js" | "globals" | "typescript-eslint"
+  - "eslint-config-prettier"
+  - "eslint-plugin-check-file"
+  - "eslint-plugin-react-hooks"
+  - "eslint-plugin-react-refresh"
+- [x] "prettier"
+  - "prettier-plugin-tailwindcss"
+- [x] "react" | "react-dom" | "@types/react" | "@types/react-dom"
+  - "typescript" | "@types/node"
+  - "vite" | "@vitejs/plugin-react-swc"
+- [x] "tailwindcss" | "@tailwindcss/vite"
+- [x] Shadcn: "class-variance-authority" | "clsx" | "lucide-react" | "tailwind-merge" | "tw-animate-css"
+  - "@radix-ui/react-slot"
+- [x] "react-router"
+
+## Docs
+
+Prettier
+
+- setup: https://prettier.io/docs/install
+- .prettierrc: https://prettier.io/docs/configuration
+- .prettierignore: https://prettier.io/docs/ignore
+
+## Commands
+
+Helpers
+
+- `pnpm run clean`: Delete files ignored by git
+- `pnpm run format:eol`: Convert all files to LF
+- `pnpm install`: Install dependencies
+- `pnpm approve-builds`: Approve post-install scripts
+- `pnpm up --latest`: Update dependencies to the last version
+
+Format code
+
+- `pnpm run format`: Run prettier
+- `pnpm run lint`: Run eslint
+- `pnpm run typecheck`: Run type checker
+
+Start dev
+
+- `pnpm run dev`: Run frontend in development
+
+Start prod
+
+- `pnpm run build`: Build frontend
+- `pnpm run preview`: Run frontend in preview
+
+---
+
+## Vite
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh

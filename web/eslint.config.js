@@ -1,4 +1,14 @@
-import js from '@eslint/js';
+/* docs:
+- installation: https://eslint.org/docs/latest/use/getting-started
+- eslint.config.js: https://eslint.org/docs/latest/use/configure/configuration-files#configuration-file
+- "typescript-eslint": https://typescript-eslint.io/getting-started/
+- linting with type information: https://typescript-eslint.io/getting-started/typed-linting/
+- disable type checked: https://typescript-eslint.io/users/configs#disable-type-checked
+*/
+
+import eslint from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import checkFile from 'eslint-plugin-check-file';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import { defineConfig, globalIgnores } from 'eslint/config';
@@ -6,21 +16,55 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig([
-  globalIgnores([
-    'dist',
-    '**/shadcn-ui/', // "shadcn" components
-  ]),
+  globalIgnores(['**/dist/', '**/shadcn/ui/']),
+
+  // Extended configs
+  eslint.configs.recommended,
+  tseslint.configs.strictTypeChecked, // Strict with type information
+  tseslint.configs.stylisticTypeChecked, // Stylistic with type information
+  reactHooks.configs.flat.recommended,
+  reactRefresh.configs.vite,
+
+  // Settings
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      parserOptions: {
+        projectService: true, // "typescript-eslint": Enables linting with type information
+      },
+    },
+    plugins: { 'check-file': checkFile },
+    rules: {
+      // "eslint"
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['..', '../**', 'src/*', 'tests/*'],
+              message: 'Use a path alias instead',
+            },
+            {
+              group: ['@/lib/drizzle/schemas/*'],
+              message: 'Use "@/lib/drizzle/schemas" instead',
+            },
+          ],
+        },
+      ],
+
+      // "typescript-eslint"
+      '@typescript-eslint/no-floating-promises': 'error',
+
+      // "eslint-plugin-check-file"
+      'check-file/filename-naming-convention': [
+        'error',
+        { '**/*.ts': 'KEBAB_CASE' },
+        { ignoreMiddleExtensions: true },
+      ],
+      'check-file/folder-naming-convention': ['error', { '**/': 'KEBAB_CASE' }],
     },
   },
+
+  eslintConfigPrettier, // Must be placed last to override other configs
 ]);
