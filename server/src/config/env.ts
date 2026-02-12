@@ -16,7 +16,7 @@ export const isDevelopment = !isProduction && !isTest;
 if (!isProduction) {
   // Disabled eslint: use "require()" to load dotenv synchronously
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  (require('dotenv') as typeof import('dotenv')).config();
+  (require('dotenv') as typeof import('dotenv')).config({ quiet: isTest });
 }
 
 // ---------------------------

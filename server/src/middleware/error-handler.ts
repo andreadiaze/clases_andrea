@@ -2,6 +2,7 @@
 // docs: https://expressjs.com/en/guide/error-handling.html
 
 import { ApiError } from '@/errors/api-error';
+import { logger } from '@/libs/logger/winston';
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
@@ -25,6 +26,6 @@ export const errorHandler = (
     validationErrors = err.validationErrors;
   }
 
-  console.error(err.stack ?? message);
+  logger.error(err.stack ?? message);
   res.status(status).json({ message, validationErrors });
 };
