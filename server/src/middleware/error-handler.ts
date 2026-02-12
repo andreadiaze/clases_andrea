@@ -3,6 +3,7 @@
 
 import { ApiError } from '@/errors/api-error';
 import { logger } from '@/lib/logger/winston';
+import { DrizzleQueryError } from 'drizzle-orm';
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
@@ -19,11 +20,36 @@ export const errorHandler = (
   let message = 'Server error';
   let validationErrors: ApiError['validationErrors'];
 
+  // Check body parser error
+  if (
+    err instanceof SyntaxError &&
+    'status' in err &&
+    err.status === StatusCodes.BAD_REQUEST &&
+    'body' in err
+  ) {
+    status = err.status;
+    message = 'Malformed JSON body';
+  }
+
   // Check api error
   if (err instanceof ApiError) {
     status = err.status;
     message = err.message;
     validationErrors = err.validationErrors;
+  }
+
+  // Check db error
+  if (err instanceof DrizzleQueryError && err.cause && 'code' in err.cause) {
+    switch (err.cause.code) {
+      case '23505':
+        status = StatusCodes.CONFLICT;
+        message = 'Data already exists';
+        break;
+
+      default:
+        status = StatusCodes.INTERNAL_SERVER_ERROR;
+        message = 'Database error';
+    }
   }
 
   logger.error(err.stack ?? message);
