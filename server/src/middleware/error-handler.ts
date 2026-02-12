@@ -2,7 +2,7 @@
 // docs: https://expressjs.com/en/guide/error-handling.html
 
 import { ApiError } from '@/errors/api-error';
-import { logger } from '@/libs/logger/winston';
+import { logger } from '@/lib/logger/winston';
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 

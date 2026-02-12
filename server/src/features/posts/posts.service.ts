@@ -1,11 +1,11 @@
 import { buildEntityNotFoundError } from '@/errors/api-errors';
-import { db } from '@/libs/drizzle/db';
-import { postsTable } from '@/libs/drizzle/schemas';
+import { db } from '@/lib/drizzle/db';
+import { postsTable } from '@/lib/drizzle/schemas';
 import {
   CreatePost,
   GetPosts,
   UpdatePost,
-} from '@/libs/zod/schemas/posts.schema';
+} from '@/lib/zod/schemas/posts.schema';
 import { eq } from 'drizzle-orm';
 
 const PostNotFoundError = buildEntityNotFoundError('Post');

@@ -1,3 +1,8 @@
+OJO:
+
+- Testear watch mode
+- Downgradear eslint
+
 ## Docs:
 
 - express: https://expressjs.com/en/starter/hello-world.html
@@ -29,6 +34,10 @@ Prepare database
 Start
 
 - `pnpm run dev`: Run application in development and watch mode
+
+Tools
+
+- `pnpm run repl`: Run REPL
 
 ## Dependencies
 
