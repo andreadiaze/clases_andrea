@@ -10,7 +10,7 @@ import {
   getPostsSchema,
   postsParamsSchema,
   updatePostSchema,
-} from '@/libs/zod/schemas/posts.schema';
+} from '@/lib/zod/schemas/posts.schema';
 import { zodValidator } from '@/middleware/zod-validator';
 import { Router } from 'express';
 

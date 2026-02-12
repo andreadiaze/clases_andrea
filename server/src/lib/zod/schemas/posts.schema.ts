@@ -1,4 +1,4 @@
-import { content, limit, page, search, uuid } from '@/libs/zod/utils/fields';
+import { content, limit, page, search, uuid } from '@/lib/zod/utils/fields';
 import * as z from 'zod';
 
 // ---------------------------

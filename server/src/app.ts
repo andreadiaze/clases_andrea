@@ -1,5 +1,5 @@
 import express from 'express';
-import { morganMiddleware } from './libs/logger/morgan';
+import { morganMiddleware } from './lib/logger/morgan';
 import { errorHandler } from './middleware/error-handler';
 import { notFound } from './middleware/not-found';
 import { routes } from './routes';

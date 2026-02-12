@@ -2,7 +2,7 @@
 
 import { app } from './app';
 import { PORT } from './config/env';
-import { logger } from './libs/logger/winston';
+import { logger } from './lib/logger/winston';
 
 // ---------------------------
 // STARTUP
