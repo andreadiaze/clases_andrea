@@ -6,7 +6,7 @@ import { defineConfig } from 'drizzle-kit';
 // Paths must be relative to project root
 export default defineConfig({
   out: './migrations',
-  schema: './src/libs/drizzle/schemas/index.ts',
+  schema: './src/lib/drizzle/schemas/index.ts',
   dialect: 'postgresql',
   dbCredentials: { url: DATABASE_URL },
 });
